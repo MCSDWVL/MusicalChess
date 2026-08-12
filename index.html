@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Musical Chess</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <div>
+          <p class="eyebrow">A shared song controls both armies</p>
+          <h1>Musical Chess</h1>
+        </div>
+        <div class="controls">
+          <button id="playButton" class="primary">Play loop</button>
+          <label class="mode-toggle"><input id="continuousToggle" type="checkbox" /> Continuous loop</label>
+          <label class="mode-toggle"><input id="eitherSideToggle" type="checkbox" /> Notes control either side</label>
+          <label class="mode-toggle"><input id="crossDeleteToggle" type="checkbox" /> Cross-side deletions</label>
+          <button id="replayButton" disabled>Replay match</button>
+          <button id="restartButton">New board</button>
+        </div>
+      </header>
+
+      <section class="status-panel" aria-live="polite">
+        <div><span>Loop</span><strong id="loopCount">0</strong></div>
+        <div><span>Beat</span><strong id="beatStatus">Ready</strong></div>
+        <div class="active-readout"><span>Receiving command</span><strong id="activePiece">Compose a phrase</strong></div>
+      </section>
+
+      <section class="game-area">
+        <div id="board" class="board" aria-label="Musical chess board"></div>
+        <aside class="legend">
+          <h2>How it plays</h2>
+          <p>Each beat resolves your white note first, then a black AI note.</p>
+          <p>Rooks, bishops, and queens travel to the furthest open square in their commanded direction.</p>
+          <div class="upcoming">
+            <span>Upcoming pieces</span>
+            <ol id="upcomingPieces"></ol>
+          </div>
+          <div class="captured"><span>White lost</span><div id="whiteCaptured"></div></div>
+          <div class="captured"><span>Black lost</span><div id="blackCaptured"></div></div>
+        </aside>
+      </section>
+
+      <section class="composer">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">8-beat phrase</p>
+            <h2>Loop composer</h2>
+          </div>
+          <p id="composerHint">Choose a beat, then add a note. Empty beats are allowed.</p>
+        </div>
+        <div id="sequencer" class="sequencer" aria-label="Eight beat loop editor"></div>
+        <div id="notePads" class="note-pads" aria-label="Note palette"></div>
+      </section>
+
+      <section class="event-log">
+        <h2>Last events</h2>
+        <ol id="log"></ol>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
